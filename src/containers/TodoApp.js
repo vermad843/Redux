@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';//to use state which is in the store
+import { connect } from 'react-redux';
 
-import NewTodoForm from './components/NewTodoForm';
-import TodoList from './components/TodoList';
+import { actions } from '../store';
+
+import NewTodoForm from '../components/NewTodoForm';
+import TodoList from '../components/TodoList';
 
 class TodoApp extends Component {
   constructor() {

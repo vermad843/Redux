@@ -11,7 +11,7 @@ create a store :
 .we store the state in the store but when we make it available again to the  components then they are called props .
 
 .newTodoChanged this is a method to deal with when user type something on the screen but the reducer don't understand methods they only understand actions 
-so we have to convert our methods to action so that reducer can understand it .then reducer will dispatch the info and update the state.
+so we have to convert our methods to action so that reducer can understand it .then reducer will dispatch the info and update the store.
 
 
 
