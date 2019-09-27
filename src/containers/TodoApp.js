@@ -11,11 +11,6 @@ class TodoApp extends Component {
     super();
   }
 
-  newTodoChanged(event) {
-    this.setState({
-      newTodo: event.target.value
-    });
-  }
 
   formSubmitted(event) {
     event.preventDefault();
@@ -69,7 +64,7 @@ class TodoApp extends Component {
         <NewTodoForm
             newTodo={this.props.newTodo}
             formSubmitted={this.formSubmitted.bind(this)}
-            newTodoChanged={this.newTodoChanged.bind(this)} />
+            newTodoChanged={this.props.onNewTodoChanged} />
         <button onClick={() => this.allDone()}>All Done</button>
         <TodoList
           todos={this.props.todos}
@@ -90,16 +85,20 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return 
+  return {
+    onNewTodoChanged(newTodo)  {
+      dispatch(actions.newTodoChanged(newTodo));
+    }
+  }
 }
 
 
 
-export default connect(mapStateToProps)(TodoApp);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);
 
 
 
 //mapStateToProps connects redux store to the component
-
+  //state as props 
 
 //actions as props : mapDispatchToProps
