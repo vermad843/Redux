@@ -1,6 +1,7 @@
 const NEW_TODO_CHANGED = 'NEW_TODO_CHANGED';
 const ADD_TODO = 'ADD_TODO'; //FOR FORM SUBMITTED!!!
 const TOGGLE_TODO_DONE = 'TOGGLE_TODO_DONE';
+const REMOVE_TODO  = 'REMOVE_TODO ';
 
 const initialState = {             //creating a store
     
@@ -31,9 +32,15 @@ export const actions = {
   },
   toggleTodoDone(toggle) {
     return {
-      type : TOGGLE_TODO_DONE,
-      toggle
+    type : TOGGLE_TODO_DONE,
+    toggle
     };
+  },
+  removeTodo(index) {
+   return {
+    type : REMOVE_TODO,
+    index
+   } 
   }
 }
 
@@ -61,7 +68,15 @@ export function reducer(state = initialState , action) {
       return {
         ...state,
         todos 
-      }
+      };
+    } 
+    case REMOVE_TODO : {
+      const todos = [...state.todos]; // copy the array
+      todos.splice(action.index, 1);
+      return {
+        ...state,
+        todos
+      };
     }
     default : 
     return state;
