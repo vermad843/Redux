@@ -25,19 +25,6 @@ class TodoApp extends Component {
     });
   }
 
-  
-  allDone() {
-    const todos = this.state.todos.map(todo => {
-      return {
-        title: todo.title, // can also do ...todo
-        done: true
-      };
-    });
-
-    this.setState({
-      todos
-    });
-  }
 
   render() {
     return (
@@ -47,7 +34,7 @@ class TodoApp extends Component {
             newTodo={this.props.newTodo}
             formSubmitted={this.formSubmitted.bind(this)}
             newTodoChanged={this.props.onNewTodoChanged} />
-        <button onClick={() => this.allDone()}>All Done</button>
+        <button onClick={() => this.props.onAllDone()}>All Done</button>
         <TodoList
           todos={this.props.todos}
           toggleTodoDone={this.toggleTodoDone.bind(this)}
@@ -79,6 +66,9 @@ function mapDispatchToProps(dispatch) {
   },
   onRemoveTodo(index) {
     dispatch(actions.removeTodo(index));
+  },
+  onAllDone() {
+    dispatch(actions.allDone());
   }
  }
 

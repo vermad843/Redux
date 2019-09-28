@@ -2,6 +2,7 @@ const NEW_TODO_CHANGED = 'NEW_TODO_CHANGED';
 const ADD_TODO = 'ADD_TODO'; //FOR FORM SUBMITTED!!!
 const TOGGLE_TODO_DONE = 'TOGGLE_TODO_DONE';
 const REMOVE_TODO  = 'REMOVE_TODO ';
+const ALL_DONE = 'ALL_DONE';
 
 const initialState = {             //creating a store
     
@@ -41,6 +42,11 @@ export const actions = {
     type : REMOVE_TODO,
     index
    } 
+  }, 
+  allDone() {
+    return {
+      type : ALL_DONE
+    };
   }
 }
 
@@ -78,8 +84,20 @@ export function reducer(state = initialState , action) {
         todos
       };
     }
+    case ALL_DONE : {
+      const todos = state.todos.map(todo => {
+        return {
+          title: todo.title, // can also do ...todo
+          done: true
+        };
+      });
+      return {
+        ...state,
+        todos
+      };
+    }
     default : 
-    return state;
+      return state;
   }
 }
 
