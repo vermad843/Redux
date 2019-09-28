@@ -19,13 +19,9 @@ class TodoApp extends Component {
   }
 
   toggleTodoDone(event, index) {
-    const todos = [...this.state.todos]; // copy the array
-    todos[index] = {
-      ...todos[index],
-      done: event.target.checked // update done property on copied todo
-    }; // copy the todo can also use Object.assign
-    this.setState({
-      todos
+    this.props.onToggleTodoDone({
+      index,
+      checked : event.target.checked
     });
   }
 
@@ -85,7 +81,10 @@ function mapDispatchToProps(dispatch) {
     }, 
    onAddTodo(todo) {
    dispatch(actions.addTodo(todo));
-  }
+  },
+  onToggleTodoDone(toggle) {
+    dispatch(actions.toggleTodoDone(toggle));
+  },
  }
 
 }
