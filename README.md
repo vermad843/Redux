@@ -22,3 +22,6 @@ store => provider => container => component => user interact with it  => actions
 
 
 using the redux developer tools .
+
+
+using  add_todo action for formSubmiitted method. 
