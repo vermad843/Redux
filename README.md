@@ -16,3 +16,9 @@ so we have to convert our methods to action so that reducer can understand it .t
 
 
 important files to see are App.js,index.js,store.js
+
+
+store => provider => container => component => user interact with it  => actions => reducer => store.
+
+
+using the redux developer tools .
